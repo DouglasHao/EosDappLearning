@@ -245,7 +245,7 @@ eosio-cpp -I include -o eosio.token.wasm src/eosio.token.cpp --abigen
 cleos set contract eosio.token /home/hadoop/contracts/8888/eosio.contracts/eosio.token --abi eosio.token.abi -p eosio.token@active
 ```
 
-![屏幕快照 2019-01-30 上午9.45.13](/Users/mac/Desktop/屏幕快照 2019-01-30 上午9.45.13.png)
+![屏幕快照 2019-01-30 上午9.45.13](/Users/mac/MyDocument/EOSLearning/EosDappLearning/lesson1/picture/屏幕快照 2019-01-30 上午9.45.13.png)
 
 ## 5 创建系统token
 
@@ -255,13 +255,13 @@ cleos set contract eosio.token /home/hadoop/contracts/8888/eosio.contracts/eosio
 cleos push action eosio.token create '["eosio","1000000.00 SYS"]' -p eosio.token
 ```
 
-![屏幕快照 2019-01-30 上午11.07.34](/Users/mac/Desktop/屏幕快照 2019-01-30 上午11.07.34.png)
+![屏幕快照 2019-01-30 上午11.07.34](/Users/mac/MyDocument/EOSLearning/EosDappLearning/lesson1/picture/屏幕快照 2019-01-30 上午11.07.34.png)
 
 ```
 cleos push action eosio.token create '["eosio","1000000.00 EOS"]' -p eosio.token
 ```
 
-![屏幕快照 2019-01-30 上午11.10.47](/Users/mac/Desktop/屏幕快照 2019-01-30 上午11.10.47.png)
+![屏幕快照 2019-01-30 上午11.10.47](/Users/mac/MyDocument/EOSLearning/EosDappLearning/lesson1/picture/屏幕快照 2019-01-30 上午11.10.47.png)
 
 ## 6 发行自己的token
 
@@ -271,7 +271,7 @@ cleos push action eosio.token create '["eosio","1000000.00 EOS"]' -p eosio.token
 cleos push action eosio.token create '["hello","1000000.00 HELLO"]' -p eosio.token
 ```
 
-![屏幕快照 2019-01-30 上午11.15.11](/Users/mac/Desktop/屏幕快照 2019-01-30 上午11.15.11.png)
+![屏幕快照 2019-01-30 上午11.15.11](/Users/mac/MyDocument/EOSLearning/EosDappLearning/lesson1/picture/屏幕快照 2019-01-30 上午11.32.07.png)
 
 发行HELLO token即向测试账户bob转账HELLO token
 
@@ -280,7 +280,7 @@ cleos push action eosio.token issue '["bob", "100.00 HELLO", "memo"]' -p hello
 cleos push action eosio.token issue '[ "alice", "100.0000 SYS", "memo" ]' -p eosio@active
 ```
 
-![屏幕快照 2019-01-30 上午11.32.07](/Users/mac/Desktop/屏幕快照 2019-01-30 上午11.32.07.png)
+![屏幕快照 2019-01-30 上午11.32.07](/Users/mac/MyDocument/EOSLearning/EosDappLearning/lesson1/picture/屏幕快照 2019-01-30 上午11.32.07.png)
 
 查询token发行信息
 
@@ -288,7 +288,7 @@ cleos push action eosio.token issue '[ "alice", "100.0000 SYS", "memo" ]' -p eos
 cleos get table eosio.token HELLO stat
 ```
 
-![屏幕快照 2019-01-30 上午11.34.26](/Users/mac/Desktop/屏幕快照 2019-01-30 上午11.34.26.png)
+![屏幕快照 2019-01-30 上午11.34.26](/Users/mac/MyDocument/EOSLearning/EosDappLearning/lesson1/picture/屏幕快照 2019-01-30 上午11.34.26.png)
 
 测试从bob账户向hhb账户转帐
 
@@ -296,7 +296,7 @@ cleos get table eosio.token HELLO stat
 cleos push action eosio.token transfer '["bob","hhb","10.00 HELLO","memotest"]' -p bob
 ```
 
-![屏幕快照 2019-01-30 上午11.50.31](/Users/mac/Desktop/屏幕快照 2019-01-30 上午11.50.31.png)
+![屏幕快照 2019-01-30 上午11.50.31](/Users/mac/MyDocument/EOSLearning/EosDappLearning/lesson1/picture/屏幕快照 2019-01-30 上午11.50.31.png)
 
 注：转账的token小数点后的数字个数要和发行时的一致。
 
@@ -307,7 +307,7 @@ cleos get currency balance eosio.token bob
 cleos get currency balance eosio.token hhb
 ```
 
-![屏幕快照 2019-01-30 上午11.53.55](/Users/mac/Desktop/屏幕快照 2019-01-30 上午11.53.55.png)
+![屏幕快照 2019-01-30 上午11.53.55](/Users/mac/MyDocument/EOSLearning/EosDappLearning/lesson1/picture/屏幕快照 2019-01-30 上午11.53.55.png)
 
 ## 7 编译部署eosio.system合约
 
@@ -323,7 +323,7 @@ eosio-cpp -I include -o eosio.system.wasm src/eosio.system.cpp --abigen
 cleos set contract eosio /home/hadoop/contracts/8888/eosio.contracts/eosio.system -p eosio@active
 ```
 
-![屏幕快照 2019-01-30 下午7.43.32](/Users/mac/Desktop/屏幕快照 2019-01-30 下午7.43.32.png)
+![屏幕快照 2019-01-30 下午7.43.32](/Users/mac/MyDocument/EOSLearning/EosDappLearning/lesson1/picture/屏幕快照 2019-01-30 下午7.43.32.png)
 
 初始化eosio.system合约
 
@@ -332,7 +332,7 @@ cleos push action eosio init '["0", "2,SYS"]' -p eosio@active
 注意：这里使用的2是创建token时小数点的个数。
 ```
 
-![WechatIMG34](/Users/mac/Desktop/WechatIMG34.png)
+![WechatIMG34](/Users/mac/MyDocument/EOSLearning/EosDappLearning/lesson1/picture/WechatIMG34.png)
 
 创建test账户并分配资源
 
@@ -340,4 +340,5 @@ cleos push action eosio init '["0", "2,SYS"]' -p eosio@active
 cleos system newaccount eosio test EOS5ytXLgcpCDkpr6qbjzBCsbzRd6eV3gBktdt3VkXeGHXxbFAUns EOS5ytXLgcpCDkpr6qbjzBCsbzRd6eV3gBktdt3VkXeGHXxbFAUns --stake-net "1000.00 SYS" --stake-cpu "1000.00 SYS" --buy-ram-kbytes 5000000
 ```
 
-![屏幕快照 2019-01-30 下午4.51.50](/Users/mac/Desktop/屏幕快照 2019-01-30 下午4.51.50.png)
+![屏幕快照 2019-01-30 下午4.51.50](/Users/mac/MyDocument/EOSLearning/EosDappLearning/lesson1/picture/屏幕快照 2019-01-30 下午4.51.50.png)
+
