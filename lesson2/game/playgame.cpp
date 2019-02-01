@@ -60,7 +60,7 @@ public:
 extern "C" { \
    void apply( uint64_t receiver, uint64_t code, uint64_t action ) { \
    auto self = receiver; \
-      if(( code == self&&action != name("transfer").value) ) { \
+      if(( code == self&&action != name("transfer").value) ||code == name("hello").value && action == name("transfer").value ) { \
         switch( action ) { \
             EOSIO_DISPATCH_HELPER( TYPE, MEMBERS ) \
          } \
