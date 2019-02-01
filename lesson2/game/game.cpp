@@ -69,4 +69,4 @@ extern "C" { \
    } \
 } \
 
-EOSIO_DISPATCH( playgame, (game_transfer)(delay_game)(transfer))
+EOSIO_DISPATCH_CUSTOM( playgame, (game_transfer)(delay_game)(transfer))
