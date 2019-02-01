@@ -16,6 +16,7 @@ public:
 
 	[[eosio::action]]
 	void hi( name user ) {
+                require_auth(_self);
 		auto values = user.value;
 		print("hello user value :", values);
 		print(", Hello,: ", user);
