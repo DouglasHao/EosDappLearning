@@ -18,7 +18,7 @@ public:
 	
 
 	[[eosio::action]]
-	void gameTransfer( name user ) {
+	void gametransfer( name user ) {
 		require_auth(_self);
 		auto values = user.value;
 		print("game user value :", values);
@@ -39,10 +39,10 @@ public:
 
 	//延时调用
 	[[eosio::action]]
-	void delayGame(string memo) {
+	void delaygame(string memo) {
 		eosio::transaction t{};
 		t.actions.emplace_back(eosio::permission_level(_self,name("active")),
-								name("playgame"),name("gameTransfer"),
+								name("playgame"),name("gametransfer"),
 								std::make_tuple(name("game")));
 		t.delay_sec = 1;
 		t.send(1, _self, false);
@@ -69,4 +69,4 @@ extern "C" { \
    } \
 } \
 
-EOSIO_DISPATCH_CUSTOM(playgame, (gameTransfer)(delayGame)(transfer))
+EOSIO_DISPATCH_CUSTOM(playgame, (gametransfer)(delaygame)(transfer))
