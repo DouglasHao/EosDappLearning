@@ -56,17 +56,17 @@ public:
 	}		
 };
 
-#define EOSIO_DISPATCH_CUSTOM(TYPE, MEMBERS) 
-extern "C" { 
-   void apply( uint64_t receiver, uint64_t code, uint64_t action ) { 
-   auto self = receiver; 
-      if(( code == self&&action != name("transfer").value) ) { 
-        switch( action ) { 
-            EOSIO_DISPATCH_HELPER( TYPE, MEMBERS ) 
-         } 
-         /* does not allow destructor of this contract to run: eosio_exit(0); */ 
-      } 
-   } 
-} 
+#define EOSIO_DISPATCH_CUSTOM(TYPE, MEMBERS) \
+extern "C" { \
+   void apply( uint64_t receiver, uint64_t code, uint64_t action ) { \
+   auto self = receiver; \
+      if(( code == self&&action != name("transfer").value) ) { \
+        switch( action ) { \
+            EOSIO_DISPATCH_HELPER( TYPE, MEMBERS ) \
+         } \
+         /* does not allow destructor of this contract to run: eosio_exit(0); */ \
+      } \
+   } \
+} \
 
-EOSIO_DISPATCH_CUSTOM( playgame, (game_transfer)(delay_game)(transfer))
+EOSIO_DISPATCH_CUSTOM(playgame, (game_transfer)(delay_game)(transfer))
