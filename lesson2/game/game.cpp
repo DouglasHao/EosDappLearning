@@ -10,11 +10,12 @@
 #include <eosiolib/dispatcher.hpp>
 
 using namespace eosio;
+using namespace std;
 
 class playgame : public contract {
 public:
 	using contract::contract;
-	using namespace std;
+	
 
 	[[eosio::action]]
 	void game_transfer( name user ) {
