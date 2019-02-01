@@ -2,7 +2,7 @@
 #include <eosiolib/print.hpp>
 #include <eosiolib/asset.hpp>
 #include <eosiolib/action.hpp>
-#include <eosiolib/symbl.hpp>
+#include <eosiolib/symbol.hpp>
 #include <eosiolib/singleton.hpp>
 #include <eosiolib/print.hpp>
 #include <eosiolib/transaction.hpp>
