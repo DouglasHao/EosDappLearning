@@ -22,7 +22,7 @@ public:
         require_auth(_self);
 
         //记录用户的数据信息
-        work_index works(_self,_self);
+        work_index works(_self,_self.value);
 
         works.emplace(_self,[&](auto& work) {
             work.worker = user;
@@ -44,7 +44,7 @@ public:
         require_auth(_self);
 
         //增加数据
-        work_index works(_self,_self);
+        work_index works(_self,_self.value);
         works.emplace(_self,[&](auto& work) {
             work.worker = user;
             work.token = asset(0, symbol("EOS", 2));
