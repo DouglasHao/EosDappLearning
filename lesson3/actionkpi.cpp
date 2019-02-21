@@ -26,7 +26,7 @@ public:
 
         works.emplace(_self,[&](auto& work) {
             work.worker = user;
-            work.token = asset(10 * kpi * 100, symbol("EOS", 2);
+            work.token = asset(10 * kpi * 100, symbol("EOS", 2));
             work.score = kpi;
         });
 
