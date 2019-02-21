@@ -18,7 +18,7 @@ public:
 
     //记录kpi，发放奖励
     [[eosio::action]]
-    void recordkpi(name user, uint_64 kpi) {
+    void recordkpi(name user, uint64_t kpi) {
         require_auth(_self);
 
         //记录用户的数据信息
@@ -40,14 +40,14 @@ public:
 
     //添加数据
     [[eosio::action]]
-    void addrecord(user) {
+    void addrecord(name user) {
         require_auth(_self);
 
         //增加数据
         work_index works(_self,_self);
         works.emplace(_self,[&](auto& work) {
             work.worker = user;
-            work.token = asset(0, symbol("EOS", 2);
+            work.token = asset(0, symbol("EOS", 2));
             work.score = 0;
         });
     }
@@ -79,7 +79,7 @@ public:
     //参数2 表对象 表中 行的定义
     //参数3 可变参数index 最多支持16个 必须返回结构中定义的常量类型，返回二级索引或者引用
 
-    typedef eosio::multi_index<"work"_n ,work>;
+    typedef eosio::multi_index<"work"_n ,work> work_index;
 
 };
 #define EOSIO_DISPATCH_CUSTOM(TYPE, MEMBERS) \
