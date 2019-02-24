@@ -40,8 +40,10 @@ public:
 			   std::make_tuple(_self, from, asset(recordkpi * 10 * 100, symbol("EOS", 2)),
 							   std::string("start to record kpi and send token")) ).send();
 
+
 		work_index works(_self,_self.value);
 		works.emplace(_self, [&](auto& work){
+			work.id = works.available_primary_key();
 			work.worker = from;
 			work.score = recordkpi;
 			work.token = asset(recordkpi * 10 * 100, symbol("EOS",2));
