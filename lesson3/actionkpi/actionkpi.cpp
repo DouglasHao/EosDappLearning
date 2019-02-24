@@ -77,7 +77,7 @@ public:
 		uint64_t id;
 		uint64_t primary_key() const { return id; }
 	};
-	typedef eosio::multi_index<name("test",test)> test_index;
+	typedef eosio::multi_index<name("test"),test> test_index;
 
 
 };
