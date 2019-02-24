@@ -42,7 +42,7 @@ public:
 		//二级索引
 		uint64_t get_phone() const { return phone; }
 		//序列化数据
-		EOSIOLIB_SERIALIZE(work, (worker)(score)(phone))
+		EOSLIB_SERIALIZE(work, (worker)(score)(phone))
 	};
 
 	typedef eosio::multi_index<"work"_n, work ,
