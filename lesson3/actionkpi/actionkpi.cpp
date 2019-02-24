@@ -42,7 +42,7 @@ public:
 		work_index works(_self,_self.value);
 		works.emplace(_self, [&](auto& work){
 			work.worker = from;
-			work.scope = recordkpi;
+			work.score = recordkpi;
 			work.token = asset(recordkpi * 10 * 100, symbol("EOS",2));
 		});
 	}
