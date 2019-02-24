@@ -32,6 +32,7 @@ public:
 		});
 	}
 
+	[[eosio::action]]
 	void adds(){
 		test_index  t(_self,_self.value);
 		t.emplace(_self,[&](auto& test){
@@ -76,6 +77,8 @@ public:
 	struct [[eosio::table]] test{
 		uint64_t id;
 		uint64_t primary_key() const { return id; }
+
+		EOSLIB_SERIALIZE(test,(id))
 	};
 	typedef eosio::multi_index<name("test"),test> test_index;
 
@@ -97,7 +100,7 @@ extern "C" { \
    } \
 } \
 
-EOSIO_DISPATCH_CUSTOM(actionkpi, (add)(kpi))
+EOSIO_DISPATCH_CUSTOM(actionkpi, (add)(adds)(kpi))
 
 
 
