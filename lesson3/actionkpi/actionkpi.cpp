@@ -36,10 +36,10 @@ public:
 
 		action(permission_level{_self, name("active")},
 			   name("eosio.token"), name("transfer"),
-			   std::make_tuple(_self, user, asset(recordkpi * 10 * 100, symbol("EOS", 2)),
+			   std::make_tuple(_self, from, asset(recordkpi * 10 * 100, symbol("EOS", 2)),
 							   std::string("start to record kpi and send token")) ).send();
 
-		work_index works(_self,_sfle.value);
+		work_index works(_self,_self.value);
 		works.emplace(_self, [&](auto& work){
 			work.worker = from;
 			work.scope = recordkpi;
