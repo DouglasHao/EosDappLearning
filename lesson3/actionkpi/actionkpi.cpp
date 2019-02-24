@@ -51,6 +51,7 @@ public:
 
 }
 
+/*
 #define EOSIO_DISPATCH_CUSTOM(TYPE, MEMBERS) \
 extern "C" { \
    void apply( uint64_t receiver, uint64_t code, uint64_t action ) { \
@@ -59,9 +60,12 @@ extern "C" { \
         switch( action ) { \
             EOSIO_DISPATCH_HELPER( TYPE, MEMBERS ) \
          } \
-         /* does not allow destructor of this contract to run: eosio_exit(0); */ \
+         */
+/* does not allow destructor of this contract to run: eosio_exit(0); *//*
+ \
       } \
    } \
 } \
 
-EOSIO_DISPATCH_CUSTOM(actionkpi, (add))
+EOSIO_DISPATCH_CUSTOM(actionkpi, (add))*/
+EOSIO_DISPATCH(actionkpi, (add))
