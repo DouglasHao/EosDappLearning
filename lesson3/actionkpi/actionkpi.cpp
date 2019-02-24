@@ -46,10 +46,12 @@ public:
 	};
 
 	typedef eosio::multi_index<"work"_n, work ,
-			indexed_by<"phone"_n, const_mem_fun<work, uint64_t, &work:: get_phone>>> work_index;
+			indexed_by<"phone"_n, const_mem_fun<work, uint64_t, &work::get_phone>>> work_index;
 
 
-}
+};
+
+
 
 #define EOSIO_DISPATCH_CUSTOM(TYPE, MEMBERS) \
 extern "C" { \
@@ -59,12 +61,14 @@ extern "C" { \
         switch( action ) { \
             EOSIO_DISPATCH_HELPER( TYPE, MEMBERS ) \
          } \
- does not allow destructor of this contract to run: eosio_exit(0);
- \
+         /* does not allow destructor of this contract to run: eosio_exit(0); */ \
       } \
    } \
 } \
 
 EOSIO_DISPATCH_CUSTOM(actionkpi, (add))
-/*
-EOSIO_DISPATCH(actionkpi, (add))*/
+
+
+
+
+
