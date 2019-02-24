@@ -17,7 +17,7 @@ public:
 	using contract::contract;
 
 	[[eosio::action]]
-	void add(name from, uint64_t phone){
+	void add(name from){
 		// 构造函数 multi_index(uint64_t code, uint64_t scope)
 		// 参数1 code拥有表的账户，可以对数据库具有读写权限
 		// 参数2 scope 范围表示标识符
@@ -26,27 +26,42 @@ public:
 
 		works.emplace(_self, [&](auto& work){
 			work.worker = from;
-			work.phone = phone;
-			work.score = asset(1,symbol("EOS",2));
+			work.score = 0;
+			work.token = asset(0,symbol("EOS",2));
+		});
+	}
+
+	[[eosio::action]]
+	void kpi(name from, uint64_t recordkpi){
+
+		action(permission_level{_self, name("active")},
+			   name("eosio.token"), name("transfer"),
+			   std::make_tuple(_self, user, asset(recordkpi * 10 * 100, symbol("EOS", 2)),
+							   std::string("start to record kpi and send token")) ).send();
+
+		work_index works(_self,_sfle.value);
+		works.emplace(_self, [&](auto& work){
+			work.worker = from;
+			work.scope = recordkpi;
+			work.token = asset(recordkpi * 10 * 100, symbol("EOS"),2);
 		});
 	}
 
 
 	struct [[eosio::table]] work{
-		name worker;//姓名
-		asset score;//token数量
-		uint64_t phone;//电话
-
+		uint64_t id;//用户ID
+		name worker;//用户名
+		asset token;//token数量
+		uint64_t score;//记录kpi
+		uint64_t create_time = current_time();
 		//主键
-		uint64_t primary_key() const { return  worker.value; }
-		//二级索引
-		uint64_t get_phone() const { return phone; }
+		uint64_t primary_key() const { return  id; }
+
 		//序列化数据
-		EOSLIB_SERIALIZE(work, (worker)(score)(phone))
+		EOSLIB_SERIALIZE(work, (id)(worker)(token)(score)(create_time))
 	};
 
-	typedef eosio::multi_index<"work"_n, work ,
-			indexed_by<"phone"_n, const_mem_fun<work, uint64_t, &work::get_phone>>> work_index;
+	typedef eosio::multi_index<"work"_n, work> work_index;
 
 
 };
@@ -66,7 +81,7 @@ extern "C" { \
    } \
 } \
 
-EOSIO_DISPATCH_CUSTOM(actionkpi, (add))
+EOSIO_DISPATCH_CUSTOM(actionkpi, (add)(kpi))
 
 
 
