@@ -64,7 +64,7 @@ public:
 		EOSLIB_SERIALIZE(work, (id)(worker)(token)(score)(create_time))
 	};
 
-	typedef eosio::multi_index<"work2"_n, work> work_index;
+	typedef eosio::multi_index<"work"_n, work> work_index;
 
 
 };
