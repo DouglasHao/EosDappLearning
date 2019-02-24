@@ -12,7 +12,7 @@
 using namespace eosio;
 using namespace std;
 
-class [[eosio::contract]] actionkpi : public contract {
+class [[eosio::contract]] actionkpi : public eosio::contract {
 public:
 	using contract::contract;
 
