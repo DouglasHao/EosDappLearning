@@ -25,6 +25,7 @@ public:
 		work_index works(_self,_self.value);
 
 		works.emplace(_self, [&](auto& work){
+			work.id = works.available_primary_key();
 			work.worker = from;
 			work.score = 0;
 			work.token = asset(0,symbol("EOS",2));
@@ -42,7 +43,7 @@ public:
 		work_index works(_self,_self.value);
 		works.emplace(_self, [&](auto& work){
 			work.worker = from;
-			work.score = recordkpi;
+			work.score = recordkpi
 			work.token = asset(recordkpi * 10 * 100, symbol("EOS",2));
 		});
 	}
