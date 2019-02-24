@@ -43,7 +43,7 @@ public:
 		works.emplace(_self, [&](auto& work){
 			work.worker = from;
 			work.scope = recordkpi;
-			work.token = asset(recordkpi * 10 * 100, symbol("EOS"),2);
+			work.token = asset(recordkpi * 10 * 100, symbol("EOS",2));
 		});
 	}
 
