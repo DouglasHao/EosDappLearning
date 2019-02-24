@@ -12,7 +12,7 @@
 using namespace eosio;
 using namespace std;
 
-class actionkpi : public contract {
+class [[eosio::contract]] actionkpi : public contract {
 public:
 	using contract::contract;
 
@@ -81,7 +81,7 @@ public:
 
 		EOSLIB_SERIALIZE(test,(id))
 	};
-	typedef eosio::multi_index<"test"_n,test> test_index;
+	typedef eosio::multi_index<"test"_n, test> test_index;
 
 
 };
