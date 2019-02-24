@@ -32,6 +32,13 @@ public:
 		});
 	}
 
+	void adds(){
+		test_index  t(_self,_self.value);
+		t.emplace(_self,[&](auto& test){
+			test.id = t.availabel_primary_key();
+		});
+	}
+
 	[[eosio::action]]
 	void kpi(name from, uint64_t recordkpi){
 
@@ -65,6 +72,12 @@ public:
 	};
 
 	typedef eosio::multi_index<"work"_n, work> work_index;
+
+	struct [[eosio::table]] test{
+		uint64_t id;
+		uint64_t primary_key() const { return id; }
+	};
+	typedef eosio::multi_index<name("test",test)> test_index;
 
 
 };
