@@ -35,7 +35,7 @@ public:
 	void adds(){
 		test_index  t(_self,_self.value);
 		t.emplace(_self,[&](auto& test){
-			test.id = t.availabel_primary_key();
+			test.id = t.available_primary_key();
 		});
 	}
 
