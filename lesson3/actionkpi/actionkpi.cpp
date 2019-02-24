@@ -27,8 +27,6 @@ public:
 		works.emplace(_self, [&](auto& work){
 			work.id = works.available_primary_key();
 			work.worker = from;
-			work.score = 0;
-			work.token = asset(0,symbol("EOS",2));
 		});
 	}
 
